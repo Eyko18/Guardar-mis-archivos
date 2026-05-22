@@ -1,0 +1,204 @@
+/* ============================================
+   Librería de Estudio — Estilos principales
+   ============================================ */
+
+/* --- Variables de color y tipografía (tema nocturno) --- */
+:root {
+    --color-fondo: #1a1a2e;
+    --color-header: #16213e;
+    --color-texto: #e0e0e0;
+    --color-texto-claro: #ffffff;
+    --color-acento: #0f9dc4;
+    --color-tarjeta: #1f2b3e;
+    --color-sombra: rgba(0, 0, 0, 0.4);
+    --color-hover: rgba(15, 157, 196, 0.2);
+    --borde-radio: 8px;
+    --transicion: 0.3s ease;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Reset básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Cuerpo general con wallpaper nocturno --- */
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(15, 157, 196, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(108, 52, 131, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(22, 33, 62, 0.5) 0%, transparent 100%);
+    background-attachment: fixed;
+    color: var(--color-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Header y navegación --- */
+header {
+    background-color: var(--color-header);
+    color: var(--color-texto-claro);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px var(--color-sombra);
+}
+
+.header-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-contenido h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: background-color var(--transicion);
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Contenido principal --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --- Secciones por categoría --- */
+.seccion-categoria {
+    margin-bottom: 3rem;
+}
+
+.seccion-categoria h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color-acento);
+    display: inline-block;
+}
+
+/* --- Grilla de tarjetas --- */
+.grilla-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* --- Tarjeta individual --- */
+.tarjeta {
+    background-color: var(--color-tarjeta);
+    border-radius: var(--borde-radio);
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--color-sombra);
+    transition: transform var(--transicion), box-shadow var(--transicion);
+    text-decoration: none;
+    color: var(--color-texto);
+    display: block;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(15, 157, 196, 0.2);
+}
+
+/* --- Portada de la tarjeta --- */
+.tarjeta-portada {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-texto-claro);
+}
+
+/* Colores por categoría */
+.portada-dibujo {
+    background-color: #c0392b;
+}
+
+.portada-escritura {
+    background-color: #1e8449;
+}
+
+.portada-programacion {
+    background-color: #6c3483;
+}
+
+/* --- Título de la tarjeta --- */
+.tarjeta-titulo {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* --- Enlace "Ver todos" --- */
+.ver-todos {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-acento);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transicion);
+}
+
+.ver-todos:hover {
+    color: var(--color-header);
+    text-decoration: underline;
+}
+
+/* --- Responsivo: Tablet (2 columnas) --- */
+@media (max-width: 900px) {
+    .grilla-tarjetas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- Responsivo: Móvil (1 columna) --- */
+@media (max-width: 600px) {
+    .grilla-tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .header-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .seccion-categoria h2 {
+        font-size: 1.4rem;
+    }
+}
